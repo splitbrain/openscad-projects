@@ -1,31 +1,43 @@
 use <../_lib/primitives.scad>
-$fn=90;
 
-postheight = 26;
-post = 10;
-screw = 4;
-walls = 2;
-holder_space = 10;
-drill = 3;
+//post();
 
-post();
+/**
+ * Creates the post to mount the camera on the arm
+ *
+ * @param {number} height The height of the post in mm
+ * @param {number} width The diameter of the post in mm
+ * @param {number} screw The diameter of the screw hole
+ * @param {number} walls The wall thickness in mm
+ * @param {number} drill The diameter of the hole in the post bottom
+ */
+module post(
+    height = 26,
+    width = 10,
+    screw = 4,
+    walls = 2,
+    drill = 3,
+) {
+    $fn=90;
+    holder_space = 10;
 
-
-module post() {
     difference() {
+        // smooth from round to square
         hull(){
-            translate([0,0,(postheight/3)*2]) {
-                roundedCube([post, post, postheight/3]);
+            translate([0,0,(height/3)*2]) {
+                roundedCube([width, width, height/3]);
             }
-            cylinder(d=post, h=postheight/3);
+            cylinder(d=width, h=height/3);
         }
 
-        translate([0, 0, postheight - screw/2 - walls]) {
+        // screw hole
+        translate([0, 0, height - screw/2 - walls]) {
             rotate([90,0,0]) {
-                cylinder(d=screw, h=post, center=true);
+                cylinder(d=screw, h=width, center=true);
             }
         }
-        
-        cylinder(d=drill, h=(post/3)*2);
+
+        // drill hole
+        cylinder(d=drill, h=(width/3)*2);
     }
 }
