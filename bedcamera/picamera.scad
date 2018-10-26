@@ -4,10 +4,11 @@ $fn=90;
 walls = 2;
 pcb = [26, 25, 1];
 pcb_part = [17, pcb.y, 1.5];
+cable_z = 1; // above pcb
 pcb_clear = 4;
 
 body_z   = walls+pcb.z+pcb_part.z+pcb_clear;
-holder_z = walls+pcb_part.z+pcb_clear/2;
+holder_z = walls+pcb.z+pcb_part.z+cable_z;
 tab = 14;
 screw = 4;
 screwhead = 6;
@@ -21,6 +22,8 @@ lid();
  */
 module lid() {
     ridge=1; // thickness of the inner ridge
+    cable=1; // space for the cable
+    pin_off=0.2;
     
     // the lid itself
     linear_extrude(height=walls) {
@@ -42,12 +45,15 @@ module lid() {
                 }
             }
         }
-        // the pins holding the pcb down
-        pins(4, pcb_clear);
+        // the pins holding the pcb down (half a rigde shorter)
+        difference(){
+            pins(4, pcb_clear-pin_off);
+            translate([0,0,pcb_clear-ridge/2]) pins(2, ridge);
+        }
         
         // closes the cable outlet (half a ridge smaller than the outlet)
         translate([0, (pcb.y+walls) /2,0]) {
-            ccube([pcb_part.x-ridge/2, walls, ridge]);
+            ccube([pcb_part.x-ridge/2, walls, pcb_clear-cable_z-cable]);
         }
     }
     
@@ -69,7 +75,7 @@ module camera(flip=false) {
     body();
     
     // add two arms
-    translate([0, mod*pcb.y/2, 0]) {
+    translate([0, mod*(pcb.y/2 + walls), 0]) {
         translate([(holder_space+walls)/-2, 0 , 0]) {
             holderarm(flip);
         }
@@ -219,8 +225,8 @@ module pcb_cutout() {
                     ccube([pcb.x, pcb.y, pcb.z]); // pcb
                     
                     // cable outlet
-                    translate([0, pcb_part.y/2, pcb.z+pcb_clear/2]) {
-                        ccube([pcb_part.x, walls*2, pcb_clear/2]);
+                    translate([0, pcb_part.y/2, pcb.z+cable_z]) {
+                        ccube([pcb_part.x, walls*2, pcb_clear-cable_z]);
                     }
                 }
             }
