@@ -1,6 +1,8 @@
 use <../_lib/primitives.scad>;
 $fn=90;
 
+lidscrew = true;
+
 walls = 2;
 pcb = [26, 25, 1];
 pcb_part = [17, pcb.y, 1.5];
@@ -58,7 +60,7 @@ module lid() {
     }
     
     // the tab for screwing down the lid
-    translate([0, -1*pcb.y/2, 0]) {
+    if(lidscrew) translate([0, -1*pcb.y/2, 0]) {
         tab();
     }
 }
@@ -85,7 +87,7 @@ module camera(flip=false) {
     }
     
     // mechanism to screw the lid on
-    translate([0, pcb.y/-2, 0]) {
+    if(lidscrew) translate([0, pcb.y/-2, 0]) {
         closer();
     }
 }
