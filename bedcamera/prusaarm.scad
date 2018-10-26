@@ -1,18 +1,18 @@
 use <../_lib/primitives.scad>
 $fn=90;
 
-armlen = 85;
-armrot = -45; // rotation in deg
+armlen = 80;
+armrot = 0; // rotation in deg
 arm = [armlen, 10, 10];
 walls  = 2;
 screw = 4;
-screwhead = 5;
-bedarm = [18,12,6];
+screwhead = 6;
+bedarm = [20, 12.5, 6.5];
 zip = [4, bedarm.y+walls*2, 0.5]; // zip tie grove
 attachment = bedarm.y+walls*2; // the size of the attachment overlap
 
 bedmount();
-//arm();
+arm();
 
 module arm() {
     rotate([0, 0, armrot]) {
@@ -29,7 +29,7 @@ module arm() {
 }
 
 module bedmount() {
-    open = 7;
+    open = [bedarm.x - 2.5, 7, walls];
     
     // move everything so that the attachment point is centered
     translate([
@@ -50,8 +50,8 @@ module bedmount() {
                 cube(bedarm);
                 
                 // opening for the screw
-                translate([0, bedarm.y/2 - open/2, -walls]) {
-                    cube([bedarm.x, open, walls]);
+                translate([0, bedarm.y/2 - open.y/2, -walls]) {
+                    cube(open);
                 }
             }
             
