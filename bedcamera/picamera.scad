@@ -1,3 +1,4 @@
+use <../_lib/primitives.scad>;
 $fn=90;
 
 walls = 2;
@@ -234,20 +235,4 @@ module pcb_cutout() {
     }
     
     
-}
-
-/**
- * A centered cube, but flat on the Z-Surface
- */
-module ccube(v) {
-    translate([0, 0, v.z/2]) cube(v, true);
-}
-
-/**
- * An upright standing centered cylinder, flat on the Z-Surface
- */
-module ccylinder_y(h, d) {
-    translate([h/-2, 0, d/2])
-        rotate([0, 90, 0])
-            cylinder(h=h, d=d);
 }
