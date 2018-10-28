@@ -25,7 +25,7 @@ cnf_armrotation = 0; // [-45:45]
 /* [Camera Post] */
 
 // height of the camera post (mm)
-cnf_postheight = 10;
+cnf_postheight = 26;
 
 /* [Advanced] */
 
