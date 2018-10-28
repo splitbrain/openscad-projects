@@ -6,10 +6,10 @@ cnf_part = "all"; // [camera:Camera Body, lid:Camera Lid, post:Camera Post, arm:
 /* [Camera Case] */
 
 // Do want to screw the lid on the camera body?
-cnf_lidscrew = true;
+cnf_lidscrew = 1; // [0: no, 1: yes]
 
 // Do you want to flip the camera and have the cable at the bottom?
-cnf_flip = false;
+cnf_flip = 0; // [0: no, 1: yes]
 
 /* [Bed Mounting Arm] */
 
@@ -24,13 +24,13 @@ cnf_armrotation = 0; // [-45:45]
 
 /* [Camera Post] */
 
-// smothness of rounded edges
-$fn = 70;
-
 // height of the camera post (mm)
 cnf_postheight = 10;
 
 /* [Advanced] */
+
+// smothness of rounded edges
+$fn = 70;
 
 // Thickness of Walls (mm)
 cnf_walls = 2;
