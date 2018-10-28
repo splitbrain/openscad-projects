@@ -1,5 +1,4 @@
 use <../_lib/primitives.scad>
-$fn=90;
 
 //arm();
 
@@ -27,6 +26,7 @@ module arm (
     bedarm = [20, 12.5, 6.5];
     zip = [4, bedarm.y+walls*2, 0.5]; // zip tie grove
     attachment = bedarm.y+walls*2; // the size of the attachment overlap
+    $fn = $fn ? $fn : 90;
 
     // build part
     prusaMK3mount();

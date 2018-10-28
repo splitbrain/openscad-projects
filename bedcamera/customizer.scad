@@ -24,6 +24,9 @@ cnf_armrotation = 0; // [-45:45]
 
 /* [Camera Post] */
 
+// smothness of rounded edges
+$fn = 70;
+
 // height of the camera post (mm)
 cnf_postheight = 10;
 

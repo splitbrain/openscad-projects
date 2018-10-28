@@ -22,7 +22,6 @@ module picamera (
     screwhead = 4
 ) {
     // basic setup
-    $fn=90;
     pcb = [26, 25, 1];
     pcb_part = [17, pcb.y, 1.5];
     cable_z = 1; // above pcb
@@ -30,6 +29,7 @@ module picamera (
     tab = 14;
     body_z   = walls+pcb.z+pcb_part.z+pcb_clear;
     holder_z = walls+pcb.z+pcb_part.z+cable_z;
+    $fn = $fn ? $fn : 90;
 
     // print part
     if(part == "camera") {

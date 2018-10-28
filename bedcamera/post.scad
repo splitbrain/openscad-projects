@@ -18,8 +18,8 @@ module post(
     walls = 2,
     drill = 3,
 ) {
-    $fn=90;
     holder_space = 10;
+    $fn = $fn ? $fn : 90;
 
     difference() {
         // smooth from round to square
