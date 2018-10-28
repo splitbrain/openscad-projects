@@ -23,7 +23,7 @@ module arm (
 ) {
     // basic setup
     arm = [armlen, 10, 10];
-    bedarm = [20, 12.5, 6.5];
+    bedarm = [17, 12.5, 6.5];
     zip = [4, bedarm.y+walls*2, 0.5]; // zip tie grove
     attachment = bedarm.y+walls*2; // the size of the attachment overlap
     $fn = $fn ? $fn : 90;
