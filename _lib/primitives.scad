@@ -59,3 +59,31 @@ module roundedCube(v, r=1, flatcenter=true) {
             sphere(r=r);
     }
 }
+
+/**
+ * Similar to the rounded cube, but the top and bottom are flat
+ * @param {vector} v The size of the cube
+ * @param {number} r The radius of the rounding
+ * @param {bool} flatcenter centered but flat on Z
+ */
+module curvedCube(v, r=1, flatcenter=true) {
+    mv = flatcenter ? [v.x/-2, v.y/-2 ,0] : [0,0,0];
+
+    translate(mv) hull() {
+        // right back
+        translate([v.x - r, v.y - r, 0])
+            cylinder(h=v.z, r=r);
+        
+        // right front
+        translate([v.x - r, r, 0])
+            cylinder(h=v.z, r=r);
+
+        // left back
+        translate([r, v.y - r, 0])
+            cylinder(h=v.z, r=r);
+
+        // left front
+        translate([r, r, 0])
+            cylinder(h=v.z, r=r);
+    }
+}
