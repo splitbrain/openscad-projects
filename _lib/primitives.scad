@@ -1,8 +1,11 @@
 /**
  * A centered cube, but flat on the Z-Surface
+ *
+ * Negative z will create a cube flat under the surface
  */
 module ccube(v) {
-    translate([0, 0, v.z/2]) cube(v, true);
+    trans = v.z/2;
+    translate([0, 0, trans]) cube([v.x, v.y, abs(v.z)], true);
 }
 
 /**

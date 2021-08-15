@@ -33,3 +33,9 @@ module honeycomb(length, width, height, cell_size, wall_thickness)
         }
     }
 }
+
+module choneycomb(v, size, walls) {
+    translate([v.x/-2, v.y/-2, v.z/2]) {
+        honeycomb(v.x, v.y, v.z, size, walls);
+    }
+}
