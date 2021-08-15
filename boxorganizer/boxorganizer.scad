@@ -1,7 +1,7 @@
 /* basic dimensions */
 width  = 230;   // outer x dimension in mm
 length = 160;   // outer y dimension in mm
-height = 30;    // outer z dimension in mm
+height = 20;    // outer z dimension in mm
 walls  = 0.8;   // wall thickness in mm, two perimeters
 base   = true;  // is a bottom wanted?
 
@@ -14,10 +14,10 @@ BR = 3; // both walls
 
 /* grid config */
 grid = [
-    [ RB, RB, RB, B, RB, R ],
-    [ RB, RB, RB, B, RB, RB ],
-    [ RB, RB, RB, B, B, RB ],
-    [ RB, RB, RB, B, B, RB ],
+    [ RB, RB, RB, RB, RB ],
+    [ RB, RB, RB, RB, RB ],
+    [ RB, RB, RB, RB, RB ],
+    [ RB, RB, RB, RB, RB ],
 ];
 
 /* -------- */
